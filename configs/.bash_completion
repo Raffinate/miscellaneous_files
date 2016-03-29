@@ -1,0 +1,17 @@
+_runapp ()
+{
+        local cur
+        local argnum
+        argnum=$COMP_CWORD
+        cur=${COMP_WORDS[COMP_CWORD]}
+
+        if [[ "$argnum" == 1 ]]; then
+           COMPREPLY=( $( compgen -c $cur ))
+        else
+           _command_offset 1
+        fi
+
+}
+
+complete -F _runapp runapp
+# complete -F _command runapp
